@@ -34,8 +34,8 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "sme", "pharmacist", "admin"],
-    default: "user",
+    enum: ["land_owners", "drc_officers", "building_inspectors", "bank_officers","land_surveryers","nlcs_officers","system_admins"],
+    default: "land_owners",
   },
   connectedWallet: {
     type: String,

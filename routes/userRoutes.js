@@ -9,8 +9,12 @@ router.get('/signout',authController.signout)
 router.patch('/updateMyPassword',authController.protect,authController.updatePassword)
 router.patch('/updateMe',authController.protect,userController.uploadUserPhoto,userController.updateMe)
 
+// Session management routes
 router.get('/session-info', authController.getSessionInfo);
 router.patch('/session-preferences', authController.requireSession, authController.updateSessionPreferences);
+router.get('/session-stats', authController.protect, authController.restrictTo('admin'), authController.getSessionStats);
+router.delete('/force-logout/:userId', authController.protect, authController.restrictTo('admin'), authController.forceLogoutUser);
+router.get('/user-sessions/:userId', authController.protect, authController.restrictTo('admin'), authController.getUserSessions);
 
 router
     .route('/')
